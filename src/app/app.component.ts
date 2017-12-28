@@ -13,6 +13,8 @@ export class AppComponent {
 
   companyForm: FormGroup;
   addressComponents: Array<string> = ["street", "city", "zip", "state"];
+  states: Array<string> = ["VA", "MD", "CA"];
+  prettyValue: any;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -34,8 +36,8 @@ export class AppComponent {
      *      
      */
     let childrenFG = new FormGroup({});
-    childrenFG.addControl("name", new FormControl("Child Name"));
-    childrenFG.addControl("age", new FormControl("Child Name"));
+    childrenFG.addControl("name", new FormControl("child name"));
+    childrenFG.addControl("age", new FormControl("21"));
     childrenFG.addControl("addresses", this.fb.array([addressFG]));
 
     /**
@@ -70,6 +72,12 @@ export class AppComponent {
     });
 
     console.log(this.companyForm); 
+
+    this.prettyValue = JSON.stringify(this.companyForm.value, undefined, 2)
+
+    this.companyForm.valueChanges.subscribe(data => {
+      console.log(data);
+    })
   }
 
   createAddresses() {

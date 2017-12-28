@@ -3,14 +3,25 @@
   <p class="wrap subtitle">{{subTitle}}</p>
 </div>
 
-<div class="wrap">
-  <p>heroForm value: {{ companyForm.value | json}}</p>
+<div class="display">
+  <div class="result-section">
+    <textarea disabled cols=50 rows=50>{{ prettyValue }}</textarea>
+  </div>
+
+  <div class="form-section">
+    <form [formGroup]="companyForm" novalidate>
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Input">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </div>
+    </form>
+  </div>
 </div>
-
-<form [formGroup]="companyForm" novalidate>
-
-
-
-</form>
-
 
